@@ -1,0 +1,10 @@
+body{
+    background-color: #E94196;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+}
+
+.calculator{
+    }
