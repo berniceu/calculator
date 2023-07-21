@@ -3,8 +3,79 @@ body{
     color: white;
     font-family: 'Times New Roman', Times, serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    
 }
 
-.calculator{
-    }
+.btn {
+    width: 75px;
+    height: 75px;
+    margin: 15px;
+    font-size: 50px;
+}
+
+.btn.number{
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+}
+
+.btn.operator{
+    border: 1px solid skyblue;
+    border-radius: 10px;
+    
+}
+.btn.decimal{
+    border: 1px solid goldenrod;
+    border-radius: 10px;
+}
+.btn.equals{
+    border: 1px solid violet;
+    border-radius: 10px;
+}
+.btn.clear{
+    border: 1px solid salmon;
+    border-radius: 10px;
+}
+
+.btn.number:hover{
+    background-color: greenyellow;
+
+}
+.btn.decimal:hover{
+    background-color: goldenrod;
+}
+
+.operator:hover{
+    background-color: skyblue;
+}
+.equal:hover{
+    background-color: violet;
+}
+.clear:hover{
+    background-color: salmon;
+}
+.firstrow{
+    display: flex;
+}
+.screen{
+    width: 300px;
+    border: 1px solid paleturquoise;
+    height: 75px;
+    margin: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+.previous{
+    font-size: 20px;
+}
+.current{
+    font-size: 30px;
+}
