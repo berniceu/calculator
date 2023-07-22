@@ -1,33 +1,45 @@
+let currentValue = '';
+let previousValue = '';
+let operator = ''
 
-let clear = document.querySelector(".clear");
-let equal = document.querySelector(".equals");
-let decimal = document.querySelector(".decimal");
-let numbers = document.querySelectorAll(".number");
-let operators = document.querySelectorAll(".operators");
 
-let previousScreen = document.querySelector(".previous");
-let currentScreen = document.querySelector(".current");
+document.addEventListener("DOMContentLoaded", function(){
+    let clear = document.querySelector(".clear");
+    let equal = document.querySelector(".equals");
+    let decimal = document.querySelector(".decimal");
+    let numbers = document.querySelectorAll(".number");
+    let operators = document.querySelectorAll(".operators");
 
-numbers.forEach((number) => number.addEventListener("click", function(e){
-    handleNumber(e.target.textContent)
-    currentScreen.textContent = currentValue;
-}))
+    let previousScreen = document.querySelector(".previous");
+    let currentScreen = document.querySelector(".current");
 
-operators.forEach((op) => op.addEventListener("click", function(e){
-    operate(e.target.textContent)
-    previousScreen.textContent = `${previousValue} ${op}`;
-    currentScreen.textContent = currentValue;
-}))
+    numbers.forEach((number) => number.addEventListener("click", function(e){
+        handleNumber(e.target.textContent)
+        currentScreen.textContent = currentValue;
+    }))
 
-clear.addEventListener("click", function(){
-    currentValue = '';
-    previousValue = '';
-    op  = '';
-    previousScreen.textContent = currentValue;
-    currentScreen.textContent = currentValue;
-})
-equal.addEventListener("click", function(){
-    calculate()
+    operators.forEach((op) => op.addEventListener("click", function(e){
+        operate(e.target.textContent)
+        previousScreen.textContent = `${previousValue} ${operator}`;
+        currentScreen.textContent = currentScreen;
+    }))
+
+    clear.addEventListener("click", function(){
+        currentValue = '';
+        previousValue = '';
+        op  = '';
+        previousScreen.textContent = currentValue;
+        currentScreen.textContent = currentValue;
+    })
+    equal.addEventListener("click", function(){
+        calculate();
+        previousScreen.textContent = '';
+        currentScreen.textContent = previousValue;
+    })
+    decimal.addEventListener("click", function(){
+        addDecimal()
+
+    })
 })
 
 function handleNumber(num){
@@ -37,6 +49,7 @@ function handleNumber(num){
 }
 
 function operate(op){
+    operator = op;
     previousValue = currentValue;
     currentValue = '';
 
@@ -52,10 +65,16 @@ function calculate(){
         previousValue -= currentValue;
     } else if(op === "/"){
         previousValue /= currentValue;
-    } else if(op === "x"){
+    } else {
         previousValue *= currentValue;
     }
 
     previousValue = previousValue.toString();
     currentValue = currentValue.toString()
+}
+
+function addDecimal(){
+    if (!currentValue.includes(".")){
+        currentValue += ".";
+    }
 }

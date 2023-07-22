@@ -49,7 +49,7 @@ body{
 .btn.operator:hover{
     background-color: skyblue;
 }
-.btn.equal:hover{
+.btn.equals:hover{
     background-color: violet;
 }
 .btn.clear:hover{
