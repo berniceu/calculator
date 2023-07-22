@@ -1,7 +1,4 @@
 body{
-    background-color: #E94196;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,13 +46,13 @@ body{
     background-color: goldenrod;
 }
 
-.operator:hover{
+.btn.operator:hover{
     background-color: skyblue;
 }
-.equal:hover{
+.btn.equal:hover{
     background-color: violet;
 }
-.clear:hover{
+.btn.clear:hover{
     background-color: salmon;
 }
 .firstrow{
