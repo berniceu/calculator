@@ -33,10 +33,6 @@ body{
     border: 1px solid violet;
     border-radius: 10px;
 }
-.btn.clear{
-    border: 1px solid salmon;
-    border-radius: 10px;
-}
 
 .btn.number:hover{
     background-color: greenyellow;
@@ -52,16 +48,20 @@ body{
 .btn.equals:hover{
     background-color: violet;
 }
-.btn.clear:hover{
+.firstrow button:hover{
     background-color: salmon;
 }
-.firstrow{
+.firstrow button{
+    border: 1px solid salmon;
+    border-radius: 10px;
     display: flex;
+    flex-direction: 
+
 }
 .screen{
-    width: 300px;
-    border: 1px solid paleturquoise;
-    height: 75px;
+    width: 400px;
+    border: 3px solid paleturquoise;
+    height: 90px;
     margin: 15px;
     border-radius: 10px;
     display: flex;
