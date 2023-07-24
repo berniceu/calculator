@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     operators.forEach((op) => op.addEventListener("click", function(e){
         operate(e.target.textContent)
-        previousScreen.textContent = `${previousValue} ${operator}`;
-        currentScreen.textContent = currentScreen;
+        previousScreen.textContent = previousValue +" " + operator;
+        currentScreen.textContent = currentValue;
     }))
 
     clear.addEventListener("click", function(){
@@ -38,9 +38,16 @@ document.addEventListener("DOMContentLoaded", function(){
     })
     decimal.addEventListener("click", function(){
         addDecimal()
+        previousScreen.textContent = previousValue + '.';
+        currentScreen.textContent = currentValue;
 
     })
+    deleteButton.addEventListener('click', () => {
+        backspace();
+        
+    })
 })
+
 
 function handleNumber(num){
     if(currentValue.length <= 9){
@@ -55,17 +62,18 @@ function operate(op){
 
 }
 
-function calculate(){
+function calculate(operator, previousValue, currentValue){
     previousValue = Number(previousValue);
     currentValue = Number(currentValue);
 
-    if(op === "+"){
+    if(operator === "+"){
         previousValue += currentValue;
-    } else if(op === "-"){
+    } else if(operator === "-"){
         previousValue -= currentValue;
-    } else if(op === "/"){
+    } else if(operator === "/") {
+
         previousValue /= currentValue;
-    } else {
+    } else if (operator === "x") {
         previousValue *= currentValue;
     }
 
@@ -76,5 +84,16 @@ function calculate(){
 function addDecimal(){
     if (!currentValue.includes(".")){
         currentValue += ".";
+    }
+}
+const deleteButton = document.querySelector('.delete');
+
+
+
+function backspace(){
+    if(currentValue != ''){
+        currentValue.innerText = currentValue.innerText.slice(0, -1);
+        currentScreen = currentValue.innerText;
+        
     }
 }
