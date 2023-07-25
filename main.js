@@ -2,13 +2,12 @@ let currentValue = '';
 let previousValue = '';
 let operator = '';
 
-
-document.addEventListener("DOMContentLoaded", function(){
     let clear = document.querySelector(".clear");
     let equal = document.querySelector(".equals");
     let decimal = document.querySelector(".decimal");
     let numbers = document.querySelectorAll(".number");
     let operators = document.querySelectorAll(".operator");
+    const deleteButton = document.querySelector('.delete');
 
     let previousScreen = document.querySelector(".previous");
     let currentScreen = document.querySelector(".current");
@@ -46,11 +45,9 @@ document.addEventListener("DOMContentLoaded", function(){
     })
     deleteButton.addEventListener('click', () => {
         backspace();
-        currentValue = currentValue.slice(0, -1);
         currentScreen.textContent = currentValue;
 
     })
-})
 
 
 function handleNumber(num){
@@ -91,14 +88,12 @@ function addDecimal(){
         currentValue += ".";
     }
 }
-const deleteButton = document.querySelector('.delete');
 
 
 
 function backspace(){
     if(currentValue != ''){
-        currentValue.innerText = currentValue.innerText.slice(0, -1);
-        currentScreen = currentValue.innerText;
+        currentValue = currentValue.slice(0, -1);
         
     }
 }
