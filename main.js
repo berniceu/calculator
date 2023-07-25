@@ -1,6 +1,6 @@
 let currentValue = '';
 let previousValue = '';
-let operator = ''
+let operator = '';
 
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let equal = document.querySelector(".equals");
     let decimal = document.querySelector(".decimal");
     let numbers = document.querySelectorAll(".number");
-    let operators = document.querySelectorAll(".operators");
+    let operators = document.querySelectorAll(".operator");
 
     let previousScreen = document.querySelector(".previous");
     let currentScreen = document.querySelector(".current");
@@ -27,24 +27,28 @@ document.addEventListener("DOMContentLoaded", function(){
     clear.addEventListener("click", function(){
         currentValue = '';
         previousValue = '';
-        op  = '';
+        operator  = '';
         previousScreen.textContent = currentValue;
         currentScreen.textContent = currentValue;
     })
     equal.addEventListener("click", function(){
-        calculate();
-        previousScreen.textContent = '';
-        currentScreen.textContent = previousValue;
+        if(currentValue != '' && previousValue != ''){
+            calculate()
+            previousScreen.textContent = '';
+            currentScreen.textContent = previousValue;
+        }
+
     })
     decimal.addEventListener("click", function(){
         addDecimal()
-        previousScreen.textContent = previousValue + '.';
-        currentScreen.textContent = currentValue;
+        currentScreen.textContent = currentValue ;
 
     })
     deleteButton.addEventListener('click', () => {
         backspace();
-        
+        currentValue = currentValue.slice(0, -1);
+        currentScreen.textContent = currentValue;
+
     })
 })
 
@@ -62,7 +66,7 @@ function operate(op){
 
 }
 
-function calculate(operator, previousValue, currentValue){
+function calculate(){
     previousValue = Number(previousValue);
     currentValue = Number(currentValue);
 
@@ -77,8 +81,9 @@ function calculate(operator, previousValue, currentValue){
         previousValue *= currentValue;
     }
 
+    
     previousValue = previousValue.toString();
-    currentValue = currentValue.toString()
+    currentValue = previousValue.toString()
 }
 
 function addDecimal(){
